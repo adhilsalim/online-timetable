@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create and organize timetable</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <!-- SCRIPTS -->
+    <script src="js/script.js"></script>
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-md-6">
+                <h3 id="001213">Time Table</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-md-6">
+                <a href="https://onlinetimetable.web.app" style="text-decoration: none;">
+                    <h5>onlinetimetable.web.app</h5>
+                </a>
+            </div>
+        </div><br><br>
+        <div class="row">
+            <div class="col-1"></div>
+            <table class="col-xs-8 col-md-4 " id="subjectList">
+                <thead style="align-items: center;">
+                    <tr>
+                        <th>Subject</th>
+                        <th>Time</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        document.getElementById("001213").innerHTML = "Timetable  " + today;
+        var rowArray = [];
+        var colArray = [];
+        var k = 0;
+        var m = 0;
+
+        for (k = 0, m = 0; k <= rowArraylength; k++) {
+            var table = document.getElementById("subjectList").getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.length);
+            colArray[k + m] = rowArray[k].split("C-C")[0];
+            cell1 = newRow.insertCell(0);
+            cell1.innerHTML = `<a href="` + rowArray[k].split("C-C")[2] + `" target="_blank">` + colArray[k + m] + `</a>`;
+            m = m + 1;
+
+            colArray[k + m] = rowArray[k].split("C-C")[1];
+            cell2 = newRow.insertCell(1);
+            cell2.innerHTML = colArray[k + m];
+            m = m + 1;
+
+            colArray[k + m] = rowArray[k].split("C-C")[2];
+            cell3 = newRow.insertCell(2);
+            cell3.innerHTML = `<p style="display:none;">` + colArray[k + m] + `</p>`;
+            cell4 = newRow.insertCell(3);
+            cell4.innerHTML = `<button class="button buttonedit" onClick="onEdit(this)">edit</button>
+                       <button class="button buttondelete" onClick="onDelete(this)">delete</button>`;
+            // alert("A1:" + colArray[0] + " " + "A2:" + colArray[1] + " " + "A3:" + colArray[2] + " " + "A4:" + colArray[3] + " " + "A5:" + colArray[4] + " " + "A6:" + colArray[5]);
+        }
+
+
+    </script>
+
+</body>
+
+</html>
