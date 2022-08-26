@@ -1,2 +1,2 @@
 # Create Timetable Online
- A single static website for creating online class timetable.
+ A simple static website for creating online class timetable.
